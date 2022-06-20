@@ -6,8 +6,8 @@
 ## Установка
 
 ```console
-git clone https://github.com/expmax85/ыщьу
-cd ыщьу/
+git clone https://github.com/expmax85/Komtest
+cd Komtest/
 python3 -m pip install -r requirements.txt
 ```
 Cоздать файл `.env` и заполнить его по шаблону файла `.env.template`, или переименовать `.env.template`.
@@ -28,7 +28,7 @@ python3 manage.py loaddata fixtures/comments.json
 ```
 
 ## Docker
-Чтобы запустить проект через docker-compose, необходимо переименовать файл `.env-docker.template` в `.env`, внести правки при необходимости в нем и в файле `docker-compose.yml`.
+Чтобы запустить проект через docker-compose, необходимо переименовать файл `.env.template` в `.env`, внести правки при необходимости в нем и в файле `docker-compose.yml`.
 В контейнере используются python3.8 и postgres последней версии.
 И выполнить поочередно следующие команды:
 ```console
