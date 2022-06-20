@@ -19,11 +19,11 @@ class ManualElemViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API View for manual elements, read only.
     Allows next parameters for filtering of elements:
-     - manual_id: parameter for define a manual, in which need to filter
-     - version: define the manual version
+     - manual_id: parameter for define a manual, in which need to filter;
+     - version: define the manual version;
      - code, value: parameters allows to check/searching some manual element in all manuals or
-     with using previous parameters
-         Example: /elems/?manual_id=1&version=1.0&code=1111
+     with using previous parameters;
+     Example : /elems/?manual_id=1&version=1.0&code=1111
     """
     serializer_class = ManualElemSerializer
 
@@ -77,7 +77,7 @@ class ManualVersionViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API View for manuals, read only. Allow one query parameter: "from_date"
     for filtering of actual manuals by given date in format: "YYYY-MM-DD".
-        Example: /manuals/?from_date=2022-01-01
+    Example : /manuals/?from_date=2022-01-01
     """
     serializer_class = ManualVersionSerializer
 

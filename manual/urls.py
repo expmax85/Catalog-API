@@ -1,13 +1,13 @@
 from django.urls import path, include
-from rest_framework import routers
+from rest_framework.routers import DefaultRouter
 
 from manual import views
 
 
-router = routers.DefaultRouter()
-router.register(r'manuals', views.ManualVersionViewSet, basename='manuals')
-router.register(r'elems', views.ManualElemViewSet, basename='elements')
+router = DefaultRouter()
+router.register(r'api/manuals', views.ManualVersionViewSet, basename='manuals')
+router.register(r'api/elems', views.ManualElemViewSet, basename='elements')
 
 urlpatterns = [
-    path('api/', include(router.urls)),
+    path('', include(router.urls)),
 ]

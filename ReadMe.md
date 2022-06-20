@@ -23,8 +23,11 @@ python3 manage.py runserver 0.0.0.0:8000
 ### Тестовые данные
 Если необходимо, можно заполнить проект тестовыми данными, выполнив следующие команды перед командой `runserver`:
 ```console
-python3 manage.py loaddata fixtures/posts.json
-python3 manage.py loaddata fixtures/comments.json
+python3 manage.py loaddata fixtures/users.json
+python3 manage.py loaddata fixtures/manuals.json
+python3 manage.py loaddata fixtures/versions.json
+python3 manage.py loaddata fixtures/elements.json
+
 ```
 
 ## Docker
@@ -36,6 +39,11 @@ sudo docker-compose build
 sudo docker-compose up
 ```
 
+## Swagger
+```
+/swagger/
+```
+
 ## Получение списка справочников
 ```
 /api/manuals/
@@ -45,7 +53,7 @@ sudo docker-compose up
 ```
 /api/manuals/?from_date=<date>
 ```
-Значение `date` должно быть указано в формате `YYYY-MM-DD`. Например следующий запрос выведет акутальные справочики на 15.06.2022:
+Значение `date` должно быть указано в формате `YYYY-MM-DD`. Например, следующий запрос выведет акутальные справочики на 15.06.2022:
 ```
 /api/manuals/?from_date=2022-06-15
 ```
