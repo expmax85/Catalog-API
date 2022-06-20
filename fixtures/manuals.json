@@ -1,0 +1,20 @@
+[
+  {
+    "model": "manual.manual",
+    "pk": 1,
+    "fields": {
+      "title": "test manual 1",
+      "short_title": "tm_01",
+      "description": "description"
+    }
+  },
+  {
+    "model": "manual.manual",
+    "pk": 2,
+    "fields": {
+      "title": "test manual 2",
+      "short_title": "tm_02",
+      "description": "description"
+    }
+  }
+]

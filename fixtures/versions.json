@@ -1,0 +1,56 @@
+[
+  {
+    "model": "manual.manualversion",
+    "pk": 1,
+    "fields": {
+      "manual_info": 1,
+      "version": "1.0.0",
+      "from_date": "2022-06-17"
+    }
+  },
+  {
+    "model": "manual.manualversion",
+    "pk": 2,
+    "fields": {
+      "manual_info": 2,
+      "version": "0.5.0",
+      "from_date": "2022-06-14"
+    }
+  },
+  {
+    "model": "manual.manualversion",
+    "pk": 3,
+    "fields": {
+      "manual_info": 1,
+      "version": "1.0.1",
+      "from_date": "2022-06-18"
+    }
+  },
+  {
+    "model": "manual.manualversion",
+    "pk": 4,
+    "fields": {
+      "manual_info": 1,
+      "version": "1.0.2",
+      "from_date": "2022-06-19"
+    }
+  },
+  {
+    "model": "manual.manualversion",
+    "pk": 5,
+    "fields": {
+      "manual_info": 2,
+      "version": "0.5.1b",
+      "from_date": "2022-06-15"
+    }
+  },
+  {
+    "model": "manual.manualversion",
+    "pk": 6,
+    "fields": {
+      "manual_info": 2,
+      "version": "0.5.2",
+      "from_date": "2022-06-21"
+    }
+  }
+]

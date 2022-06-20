@@ -1,0 +1,35 @@
+
+version: "3.9"
+
+services:
+  db_rest:
+    image: postgres:latest
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+    networks:
+      - rest_net
+  web:
+    build: .
+    command:
+      sh -c "python3 manage.py makemigrations --no-input && 
+             python3 manage.py migrate --no-input && 
+             python3 manage.py loaddata fixtures/posts.json --no-input &&
+             python3 manage.py loaddata fixtures/comments.json --no-input &&
+             python3 manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db_rest
+    networks:
+      - rest_net
+
+networks:
+  rest_net:
+    name: rest_net
+    driver: bridge
