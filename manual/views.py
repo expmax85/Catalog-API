@@ -2,7 +2,8 @@ import datetime
 from typing import Union
 
 from django.db.models import QuerySet
-from rest_framework import viewsets
+from rest_framework import mixins
+from rest_framework.viewsets import GenericViewSet
 
 from manual.exceptions import ElementNotExist, WrongDateFormat, WrongQueryParams, \
     ManualNotExist, NotDefinedManualError
@@ -15,7 +16,7 @@ ELEMS_ALLOW_PARAMS = ['manual_id', 'version', 'code', 'value', 'offset', 'limit'
 MANUAL_ALLOW_PARAMS = ['from_date', 'offset', 'limit']
 
 
-class ManualElemViewSet(viewsets.ReadOnlyModelViewSet):
+class ManualElemViewSet(mixins.ListModelMixin, GenericViewSet):
     """
     API View for manual elements, read only.
     Allows next parameters for filtering of elements:
@@ -73,7 +74,7 @@ class ManualElemViewSet(viewsets.ReadOnlyModelViewSet):
         return queryset
 
 
-class ManualVersionViewSet(viewsets.ReadOnlyModelViewSet):
+class ManualVersionViewSet(mixins.ListModelMixin, GenericViewSet):
     """
     API View for manuals, read only. Allow one query parameter: "from_date"
     for filtering of actual manuals by given date in format: "YYYY-MM-DD".
