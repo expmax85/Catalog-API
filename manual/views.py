@@ -1,7 +1,6 @@
 import datetime
 from typing import Union
 
-from django.conf import settings
 from django.db.models import QuerySet
 from rest_framework import viewsets
 
@@ -98,16 +97,10 @@ class ManualVersionViewSet(viewsets.ReadOnlyModelViewSet):
                 except ValueError:
                     raise WrongDateFormat
 
-            if settings.DATABASES['default']['ENGINE'].startswith('django.db.backends.postgresql'):
-                queryset = ManualVersion.objects.select_related('manual_info')\
-                                                .filter(from_date__lte=from_date)\
-                                                .order_by('-from_date')\
-                                                .distinct('manual_info_id')
-            else:
-                queryset = ManualVersion.objects.select_related('manual_info')\
-                                                .filter(from_date__lte=from_date)\
-                                                .order_by('-from_date')
-                queryset = get_unique_manuals(queryset=queryset)
+            queryset = ManualVersion.objects.select_related('manual_info')\
+                                            .filter(from_date__lte=from_date)\
+                                            .order_by('-from_date')
+            queryset = get_unique_manuals(queryset=queryset)
             return queryset
 
         queryset = ManualVersion.objects.select_related('manual_info').all()
