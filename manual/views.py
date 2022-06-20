@@ -90,7 +90,7 @@ class ManualVersionViewSet(viewsets.ReadOnlyModelViewSet):
         from_date = self.request.query_params.get('from_date')
         if from_date:
             if from_date == 'today':
-                from_date = datetime.datetime.today()
+                from_date = datetime.date.today()
             else:
                 try:
                     datetime.datetime.strptime(from_date, '%Y-%m-%d')
