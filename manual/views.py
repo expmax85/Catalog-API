@@ -31,24 +31,25 @@ class ManualElemViewSet(mixins.ListModelMixin, GenericViewSet):
     def get_queryset(self) -> QuerySet:
         wrong_params = [x for x in self.request.query_params.keys()
                         if x not in ELEMS_ALLOW_PARAMS]
+        if wrong_params:
+            raise WrongQueryParams
+
         manual_id = self.request.query_params.get('manual_id')
         version = self.request.query_params.get('version')
         code = self.request.query_params.get('code')
         value = self.request.query_params.get('value')
 
-        if wrong_params:
-            raise WrongQueryParams
         if not manual_id and any([version, code, value]):
             raise NotDefinedManualError
         if manual_id:
+            if not Manual.objects.filter(id=manual_id).exists():
+                raise ManualNotExist
+
             params = {}
             if code:
                 params['code'] = code
             if value:
                 params['value'] = value
-
-            if not Manual.objects.filter(id=manual_id).exists():
-                raise ManualNotExist
 
             if version is None:
                 date = datetime.date.today()
